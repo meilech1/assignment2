@@ -130,6 +130,6 @@ if(!is.na(as.numeric(user_value))) {
   #* Reminding the user of the input parameters using a print function and 
   #* showing them what they entered.
   
-  print(paste("Error! Please enter a positive three digit integer", user_value,
+  print(paste("Error! Please enter a positive three digit integer.", user_value,
   "is not a valid entry. Qutting Script..."))
 }
