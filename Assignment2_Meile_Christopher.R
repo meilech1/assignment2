@@ -19,33 +19,35 @@ user_value <- readline(prompt = "Please enter a three digit positive number: ")
 #* elements in user_value are digits, they can be cast to as.numeric(). As such,
 #* the IF statement returns TRUE. 
 
-#TBD
-#* We used the && (AND) operator because we only want the second part of the
-#* IF statement (to the right of the & sign) to be evaluated if the first part
-#* evaluates to TRUE. If the first part is FALSE, the input is not a number so
-#* we don't have to bother checking that it's positive/greater than 0. This
-#* makes the code more efficient. 
-
-#TBD
-#* This comment is for the second part of the IF statement below (right of &
-#* sign). If the first part of the IF statement is TRUE, this will be evaluated.
-#* It checks if the as.numeric() value of user_value is a positive number. 
-#* Assumption made: 0 is not a positive number.
-
 if(!is.na(as.numeric(user_value))){
-  #* TRUE if user_value has been successfully casted to as.numeric()
-  print(" Number input")
   
   #* Now that we know user_value is a valid number. We create a new variable
   #* user_number, which converts user_value from character to numberic type.
   #* This allows us to call user_number for the subsequent code in this block.
   
   user_number <- as.numeric(user_value)
-  print(user_number)
   
-  if(as.numeric(user_number) > 0 & nchar(user_number) == 3) {
-    #TRUE if number is positive (assumption, 0 is not positive) AND if number has 3 digits
+  #* The nested IF statement below checks two criteria. First, it checks that
+  #* the converted 'user_number' is greater than 0. This is our criteria
+  #* for the input being a positive number. Assumption: 0 is not a positive
+  #* number. Second, the IF statement checks if the number of characters in
+  #* the number is equal to three. This is done using the nchar() function.
+  #* This is our three digit criteria. If these criteria are not met, the else 
+  #* block prints an error to the user with a prompt describing the error 
+  #* and what the user's input was. Script then terminates. 
+  
+  if(user_number > 0 & nchar(user_number) == 3) {
+    #* TRUE if 'user_number' is positive (assumption, 0 is not positive) AND if 
+    #* 'user_number' has 3 digits.
+    
+    
+    
   } else {
+    #* FALSE if 'user_number" is not positive OR if the number of characters
+    #* does not equal to three. Prints error to console and tells user
+    #* that their input did not meet these criteria. Prints user's input to
+    #* indicate what their input was. 
+    
     print(paste("Error! Your input number must be positive and 3 digits long.",
     user_number, "does not meet these criteria. Quitting Script..."))
   }
