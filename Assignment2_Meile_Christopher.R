@@ -41,19 +41,35 @@ if(!is.na(as.numeric(user_value))){
   #* If the user inputs number "1.3" both the conditions above will return TRUE. 
   #* However, we will make the assumption that narcissistic numbers can only
   #* be integers. As such, the third condition checks if the 'user_number' is
-  #* an integer by using the is.intger() function which returns TRUE or FALSE.
+  #* an integer by checking if the mod (%%) of the 'user_number' when divided by
+  #* 1 returns 0. This is only true for integers with no decimals. is.integer()
+  #* was not used instead because as.numeric() above will return a type 'double'.
+  #* In this case if we have a double the condition is still passed without
+  #* having to restrict the type to integers only. 
   #* If any of these 3 criteria are not met, the else  block prints an error to 
   #* the user with a prompt describing the error and what the user's input was. 
   #* Script then terminates. 
-
   
-  if(user_number > 0 & nchar(user_number) == 3 & is.integer(user_number)) {
+  
+  if(user_number > 0 & nchar(user_number) == 3 & (user_number %% 1 == 0)) {
     #* TRUE if 'user_number' is positive AND if 'user_number' has 3 digits AND 
     #* if 'user_number' is an integer. This marks the end of our 
     #* "User Input Validation" block. 
     
+    #* Below we are creating a new vector 'digit_vector' that will contain
+    #* all of the individual digits from 'user_number'. 
     
-    print("GOOD")
+    digit_vector <- as.numeric(strsplit(as.character(user_number), "")[[1]])
+    sum_digits_cubed <- sum(digit_vector ^ 3)
+    
+    if(sum_digits_cubed == user_number){
+      
+      print(paste(user_number, "is a Narcissistic Number! I guess", user_number,
+                  "loves to make it all about themselves..."))
+    } else {
+      print(paste(user_number, "is not a Narcissistic Number."))
+      
+    }
     
   } else {
     #* FALSE if 'user_number" is not positive OR if the number of characters
