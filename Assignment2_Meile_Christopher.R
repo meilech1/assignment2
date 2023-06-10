@@ -1,18 +1,23 @@
 # Assignment 2: Narcissistic Numbers
 
-#* INFORMATION ABOUT WORKING DIRECTORY / GIT INFO GOES HERE. TBD
-#* ASSUMPTION OVERVIEW.. will be touched upon later
-#* (1) 0 is not a positive number
-#* (2) narcissic numbers must be 3-digit long positive integers.
-#* TO DO : FIX LINE 50 
+#* This script is available via Github. User: meilech1. Repo: assignment2
+#* Link to Public Repo: https://github.com/meilech1/assignment2
+#* Note: to run this script, please press 'Source' at the top right in R Studio.
+
+#* ASSUMPTION OVERVIEW: 
+#* Below you will see a list of assumptions that have been made in the 
+#* classification of Narcissistic Numbers. 
+#* (1) 0 is not a positive number.
+#* (2) narcissistic numbers must be 3-digit long positive integers. Decimal
+#* numbers will not be processed as a valid user input. 
 
 #* First, we will prompt the user to enter a three digit positive number. This
-#* is achieved using the readline() functions which reads user input.
+#* is achieved using the readline() function which reads user input.
 #* We assign this to the variable 'user_value'. The prompt gives an indication
 #* to the user of what kind of value we expect, but we will validate the input
 #* later. For now, 'user_value' will be of type 'character' and could be anything.
 
-user_value <- readline(prompt = "Please enter a three digit positive number: ")
+user_value <- readline(prompt = "Please enter a three digit positive integer: ")
 
 #* Below is the beginning of the "Validation Block". Here we will check the user
 #* input to ensure it matches the criteria: three digit positive number.
@@ -20,13 +25,13 @@ user_value <- readline(prompt = "Please enter a three digit positive number: ")
 #* When a user input consists of non-digits (e.g. "abc", "%x4") the as.numeric() 
 #* function returns NA because it cannot cast those strings to numbers. As such,
 #* the if loop below is a condition to check the user input for non-digits. If
-#* there are any non digit characters, the if statement returns FALSE. If all 
+#* there are any non-digit characters, the if statement returns FALSE. If all 
 #* elements in 'user_value' are digits, they can be cast to as.numeric(). 
 #* As such, the IF statement would return TRUE. 
 
 if(!is.na(as.numeric(user_value))) {
   
-  #* Now that we know user_value is a number we create a new variable
+  #* Now that we know 'user_value' is a number we create a new variable
   #* 'user_number', which converts 'user_value' from character to numeric type.
   #* This allows us to call user_number for the subsequent code in this block.
   
@@ -45,12 +50,12 @@ if(!is.na(as.numeric(user_value))) {
   #* be integers. As such, the third condition checks if the 'user_number' is
   #* an integer by checking if the mod (%%) of the 'user_number' when divided by
   #* 1 returns 0. This is only true for integers with no decimals. is.integer()
-  #* was not used instead because as.numeric() above will return a type 'double'.
-  #* In this case if we have a double the condition is still passed without
-  #* having to restrict the type to integers only. If we had used as.integer()
-  #* on line XXXXXXX***** instead of as.numeric() then decimals would have been 
-  #* rounded to integers. We don't want this as decimal should not be allowed as
-  #* input. 
+  #* was not used instead because as.numeric() on line 38 will return a type 
+  #* 'double'.  In this case if we have a double the condition is still passed 
+  #* without having to restrict the type to integers only. If we had used 
+  #* as.integer() on line 38 instead of as.numeric() then decimals would have 
+  #* been rounded to integers. We don't want this as decimals should not be 
+  #* classified as a valid user input.
   #* If any of these 3 criteria are not met, the else  block prints an error to 
   #* the user with a prompt describing the error and what the user's input was. 
   #* Script then terminates. 
@@ -71,7 +76,7 @@ if(!is.na(as.numeric(user_value))) {
     #* The second argument in strsplit() is an empty string "" which indicates
     #* that the split should occur after every character. 
     #* Since the digits are now in a nested list, we can access these using
-    #* the indexing [[1]], as they will be in the first (and only) sub-list item.
+    #* the index [[1]], as they will be in the first (and only) sub-list item.
     #* Lastly, we cast as.numeric() onto this whole function including the
     #* index subscript, to convert all the items in this sub-list back to
     #* numeric objects rather than character types. This allows us to get
@@ -86,7 +91,7 @@ if(!is.na(as.numeric(user_value))) {
     sum_digits_cubed <- sum(digit_vector ^ 3)
     
     #* We then run an IF statement to check if the 'sum_digits_cubed' is equal
-    #* to the numerical value of user_number. Both are type: double, so the
+    #* to the numerical value of 'user_number'. Both are type: double, so the
     #* comparison operator will work as expected. If the condition yields TRUE
     #* we have a narcissistic number, where the sum of each digit cubed is
     #* the same as the original three digit positive number. If the condition
@@ -109,16 +114,18 @@ if(!is.na(as.numeric(user_value))) {
     }
     
   } else {
+    #* Else statement for our nested 'user_number' validation block. 
     #* FALSE if 'user_number" is not positive OR if the number of characters
-    #* does not equal to three. Prints error to console and tells user
-    #* that their input did not meet these criteria. Prints user's input to
-    #* indicate what their input was. 
+    #* does not equal to three OR if the 'user_number' is not an integer. 
+    #* Prints error to console and tells user that their input did not meet 
+    #* these criteria. Prints user's input to indicate what their input was. 
     
     print(paste("Error! The input number must be a positive 3 digit long integer.",
     user_number, "does not meet these criteria. Quitting Script..."))
   }
   
 } else {
+  #* Else statement for the 'user_value' non-digit check. 
   #* FALSE if user_value includes any non-number elements (e.g. "3hs").
   #* Reminding the user of the input parameters using a print function and 
   #* showing them what they entered.
