@@ -10,6 +10,7 @@
 #* (1) 0 is not a positive number.
 #* (2) narcissistic numbers must be 3-digit long positive integers. Decimal
 #* numbers will not be processed as a valid user input. 
+# CR comment: I thought your assumption overview was a great addition to this assignment! Very helpful for reviewer.
 
 #* First, we will prompt the user to enter a three digit positive number. This
 #* is achieved using the readline() function which reads user input.
@@ -59,7 +60,7 @@ if(!is.na(as.numeric(user_value))) {
   #* If any of these 3 criteria are not met, the else  block prints an error to 
   #* the user with a prompt describing the error and what the user's input was. 
   #* Script then terminates. 
-  
+  # CR Comment: More incredibly helpful comments for reviewing code.I now know exactly what I should expect! 
   
   if(user_number > 0 & nchar(user_number) == 3 & (user_number %% 1 == 0)) {
     #* TRUE if 'user_number' is positive AND if 'user_number' has 3 digits AND 
@@ -105,7 +106,8 @@ if(!is.na(as.numeric(user_value))) {
       print(paste(user_number, "is a Narcissistic Number! I guess", user_number,
                   "loves to make it all about themselves..."))
     } else {
-      
+
+      #CR Comment: love the output of the narcissistic number! Also liked that you used the print/ paste function as opposed to print so the output returns the number that was entered.  
       #* If the 'user_number' is NOT a narcissistic number, print this finding
       #* to the console and also print the 'user_number'. End of script.
       
@@ -123,7 +125,8 @@ if(!is.na(as.numeric(user_value))) {
     print(paste("Error! The input number must be a positive 3 digit long integer.",
     user_number, "does not meet these criteria. Quitting Script..."))
   }
-  
+  # CR Comment: One thing I would consider adding in this line is: quit(save = "no") so your R code quits if user inputs incorrect values 
+  #
 } else {
   #* Else statement for the 'user_value' non-digit check. 
   #* FALSE if user_value includes any non-number elements (e.g. "3hs").
@@ -133,3 +136,11 @@ if(!is.na(as.numeric(user_value))) {
   print(paste("Error! Please enter a positive three digit integer.", user_value,
   "is not a valid entry. Qutting Script..."))
 }
+# CR comment: Same suggestion as comment directly above. You might consider adding the quit(save = "no") line or stop() function. 
+
+
+# CR final comments
+# Overall, your code was very easy to follow evidenced by the informative comments provided throughout.
+# I appreciated how you also added comments within lines of code - this is something I will consider doing moving forward!
+# Your code functioned as it was supposed to with no unintended error messages.
+# I also believe that you used the most simple version of code to perform the requested task. Fantastic work! 
